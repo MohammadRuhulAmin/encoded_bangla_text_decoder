@@ -15,3 +15,13 @@ encoded_text = """
 
 
 ```
+
+Lets Decode this text using python ftfy library:
+
+- Step 1:install `ftfy` python library
+
+```shell
+pip install ftfy
+```
+
+- Step 2:

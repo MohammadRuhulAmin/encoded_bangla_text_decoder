@@ -9,14 +9,17 @@ char_mapping = {
 
 
 def custom_decode(text):
+    try:
     # First fix the text using ftfy
-    fixed_text = ftfy.fix_text(text)
+        fixed_text = ftfy.fix_text(text)
+        # Replace incorrectly encoded characters using the custom mapping
+        for broken_char, correct_char in char_mapping.items():
+            fixed_text = fixed_text.replace(broken_char, correct_char)
+        return fixed_text
+    except Exception as E:
+        print(str(E))
 
-    # Replace incorrectly encoded characters using the custom mapping
-    for broken_char, correct_char in char_mapping.items():
-        fixed_text = fixed_text.replace(broken_char, correct_char)
-
-    return fixed_text
+    
 
 
 # Encoded text
