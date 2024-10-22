@@ -24,4 +24,41 @@ Lets Decode this text using python ftfy library:
 pip install ftfy
 ```
 
-- Step 2:
+- Step 2: API
+
+```python
+import ftfy
+
+# Custom mapping for specific broken characters
+char_mapping = {
+    'Ã¿': 'ÿ',  # Example: replace Ã¿ with correct 'ÿ'
+    'ÿ': 'ক্ষ',  # Map the broken down 'ÿ' to 'ক্ষ'
+    # Add more mappings as necessary
+}
+
+
+def custom_decode(text):
+    try:
+    # First fix the text using ftfy
+        fixed_text = ftfy.fix_text(text)
+        # Replace incorrectly encoded characters using the custom mapping
+        for broken_char, correct_char in char_mapping.items():
+            fixed_text = fixed_text.replace(broken_char, correct_char)
+        return fixed_text
+    except Exception as E:
+        print(str(E))
+
+    
+# Encoded text
+encoded_text = """ """
+
+if __name__ == "__main__":
+    decoded_text = custom_decode(encoded_text)
+    with open('decoded_text.txt','w',encoding='utf-8') as file:
+        file.write(decoded_text)
+
+```
+
+- Step 3: See the output in `decoded_text.txt` file
+
+
